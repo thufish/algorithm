@@ -1,0 +1,43 @@
+// test.cpp : 定义控制台应用程序的入口点。
+//
+
+#include "stdafx.h"
+#include <vector>
+#include <list>
+#include <string>
+#include <iterator>
+using namespace std;
+
+int _tmain(int argc, _TCHAR* argv[])
+{
+	int n,k;
+	cout << "please input 2 numbers:"<<endl;
+	cin >> n>>k;
+	for(int i=1;i<=n;i++){
+		if (i==k){
+			continue;
+		}
+
+		for (int j=i;j<=n+i-1;j++){
+			int tmp=0;
+			j==n?tmp=n:tmp=j%n;
+
+			if (tmp!=k)
+			{
+				cout <<tmp;
+			}
+
+		}
+		cout << endl;	
+	}
+		
+	
+
+	
+
+
+	system("pause");
+	return 0;
+}
+
+
