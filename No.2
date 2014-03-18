@@ -1,3 +1,19 @@
+// test.cpp : 定义控制台应用程序的入口点。
+//
+
+#include "stdafx.h"
+#include <vector>
+#include <list>
+#include <string>
+#include <iterator>
+using namespace std;
+
+int _tmain(int argc, _TCHAR* argv[])
+{
+	string str;
+	cin >> str;
+	string str_result;
+
 	for (int i=0;i<=str.size()-1;i++)
 	{
 		int strat_pos=i;
@@ -13,3 +29,9 @@
 		i=strat_pos;
 		str_result+=max_so_far;
 	}
+	cout << str_result;
+	system("pause");
+	return 0;
+}
+
+
