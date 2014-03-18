@@ -1,0 +1,226 @@
+// test.cpp : 定义控制台应用程序的入口点。
+//
+
+#include "stdafx.h"
+#include <vector>
+#include <list>
+#include <string>
+#include <iterator>
+
+void test1();
+void test2();
+void test3();
+void test4();
+void test5();
+int _tmain(int argc, _TCHAR* argv[])
+{
+	cout << "helloworld"<<endl;
+	test3();
+	system("pause");
+	return 0;
+}
+
+void test1()
+{
+	list <int> my_list;
+	//cout << "this is test1"<<endl ;
+	int n=0;
+	int k=0;
+	cin >> n>>k;
+	if (n==1)
+	{
+		cout << "Empty";
+	}
+	for (int i=1;i<=n;i++)
+	{
+		my_list.push_back(i);
+	}
+	
+	auto iter=my_list.begin();
+
+	for (;iter!=my_list.end();iter++)
+	{
+		if (*iter == k)
+		{
+			my_list.erase(iter);
+			break;
+		}	
+	}
+	int count=0;
+	
+	
+	int len=my_list.size();
+	//add the same one
+	vector <int> vec;
+	 iter=my_list.begin();
+	for (int j=0;j<len;j++)
+	{
+		vec.push_back(*iter++);
+	}
+	 iter=my_list.begin();
+	for (int k=0;k<len;k++)
+	{
+		vec.push_back(*iter++);
+	}
+
+	auto iter_vec=vec.begin();
+	for (int count=0;count<len;count++)
+	{
+		for (int count1=count ;count1<len+count;count1++)
+		{
+			if (count1==len+count-1)
+			{
+				cout<<vec[count1]<<endl;
+			}
+			else
+			cout<<vec[count1]<<" ";
+		}
+	}
+
+	
+};
+void test2(){
+	/*
+	string str;
+	cin >> str;
+	//find the lagest one
+	string result;
+	int count=0;
+	int i=0;
+	int len=str.size();
+	while (count<len-1)
+	{
+		char tmp= char(str[count+1]);
+		int lastcount=count;
+		//find the max  one
+		for (i=count+1;i<str.size();i++)
+		{
+			if (tmp <= char(str[i]))
+			{
+				tmp=char(str[i]);
+				count=i;						
+			}
+		}
+	
+		//go back to find the first one
+		for (int j=count-1;j>lastcount;j--)
+		{
+			if (tmp==str[j])
+			{
+				count=j;
+			}
+		}
+		result+=tmp;
+	}
+	cout << result;
+	*/
+	string str;
+	cin >> str;
+
+	vector<char> res;
+	char max_so_far = 0;
+	for (int i = str.length() - 1; i >= 0; i--)
+		if (str[i] >= max_so_far) {
+			res.push_back(str[i]);
+			max_so_far = max(max_so_far, str[i]);
+		}
+
+		copy(res.rbegin(), res.rend(), ostream_iterator<char>(cout));
+}
+void test3(){
+	int n,k;
+	cin >> n>>k;
+	for (int i=1;i<=n;i++)
+	{
+		if (i==k)
+		{
+			continue;
+		}
+		for(int j=i;j<n+i-1;j++){
+			if (j<=n)
+			{
+				cout <<j;
+			}
+			else
+			{
+				if (j==2)
+				{
+					continue;
+				}
+				cout << j-n;
+			}
+		}
+		cout << endl;
+	}
+	
+	
+
+}
+void test4(){
+	int n, k;
+	cin >> n >> k;
+
+	for (int i = 0; i < n; i++) {
+		if (i == k)
+			continue;
+		for (int j = 0; j < n; j++) {
+			int tmp = (i + j) % n + 1;
+			if (tmp != k)
+				cout << tmp;
+		}
+		cout << endl;
+	}
+
+}
+void test5(){
+	int n, k;
+	cin >> n >> k;
+	for (int i=1;i<=n;i++)
+	{
+		if (i==k)
+		{
+			continue;
+		}
+	
+		//print n-1 number
+		for (int j=i;j<=n+i-1;j++)
+		{
+			if (j==k)
+			{
+				continue;
+			}	
+
+			else if (j>n)
+			{
+				int tmp=j-n;//key
+				if (tmp==k)
+				{
+					continue;
+				}	
+				cout <<tmp;
+				
+			}
+			else
+				cout <<j;
+		}
+		/*
+		//print n-1 number
+		for (int j=i;j<n+i-1;j++)
+		{
+			if (j==k)
+			{
+				continue;
+			}	
+
+			else if (j>n)
+			{
+				int tmp=j-n;//key
+				cout <<tmp<<" " ;
+			}
+			else
+				cout <<j;
+		}
+		*/
+		cout <<endl;
+	}
+}
